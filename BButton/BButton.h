@@ -50,7 +50,8 @@ typedef enum {
     BButtonTypeTwitter,
     BButtonTypeFacebook,
     BButtonTypePurple,
-    BButtonTypeGray
+    BButtonTypeGray,
+    BButtonTypePaparazzi
 } BButtonType;
 
 

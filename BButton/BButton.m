@@ -61,7 +61,7 @@
 {
     self.backgroundColor = [UIColor clearColor];
     self.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f);
-    self.titleLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:self.titleLabel.font.pointSize];
     self.shouldShowDisabled = NO;
     [self setType:BButtonTypeDefault];
 }
@@ -94,7 +94,7 @@
     if(self) {
         self.titleLabel.font = [UIFont fontWithName:@"FontAwesome" size:fontSize];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [self setTitle:[NSString stringFromAwesomeIcon:icon] forState:UIControlStateNormal];
+        [self setTitle:[NSString fontAwesomeIconStringForEnum:icon] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -211,13 +211,13 @@
 
 - (void)addAwesomeIcon:(FAIcon)icon beforeTitle:(BOOL)before
 {
-    NSString *iconString = [NSString stringFromAwesomeIcon:icon];
+    NSString *iconString = [NSString fontAwesomeIconStringForEnum:icon];
     self.titleLabel.font = [UIFont fontWithName:@"FontAwesome"
                                            size:self.titleLabel.font.pointSize];
-    
+    NSLog(@"%f", self.titleLabel.font.pointSize);
     NSString *title = [NSString stringWithFormat:@"%@", iconString];
     
-    if(![self.titleLabel.text isEmpty]) {
+    if(self.titleLabel.text != nil && ![self.titleLabel.text isEqualToString:@""]) {
         if(before)
             title = [title stringByAppendingFormat:@" %@", self.titleLabel.text];
         else
@@ -264,7 +264,7 @@
             break;
         case BButtonTypeDefault:
         default:
-            newColor = [UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f];
+            newColor = [UIColor colorWithRed:(0xFF / 255.0) green:(0x00 / 255.0) blue:(0x96/ 255.0) alpha: 1]; //[UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f];
             break;
     }
     
