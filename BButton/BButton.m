@@ -214,7 +214,6 @@
     NSString *iconString = [NSString fontAwesomeIconStringForEnum:icon];
     self.titleLabel.font = [UIFont fontWithName:@"FontAwesome"
                                            size:self.titleLabel.font.pointSize];
-    NSLog(@"%f", self.titleLabel.font.pointSize);
     NSString *title = [NSString stringWithFormat:@"%@", iconString];
     
     if(self.titleLabel.text != nil && ![self.titleLabel.text isEqualToString:@""]) {
